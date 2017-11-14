@@ -4,6 +4,7 @@
 	<groupId>it.essepuntato</groupId>
 	<artifactId>LODE</artifactId>
 	<version>1.3-SNAPSHOT</version>
+	<packaging>war</packaging>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
