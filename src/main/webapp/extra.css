@@ -30,30 +30,30 @@ body {
     color:orange;
 }
 
-.type-op {
-    cursor:help;
-    color:black;
-}
+/*.type-op {*/
+    /*cursor:help;*/
+    /*color:black;*/
+/*}*/
 
-.type-dp {
-    cursor:help;
-    color:green;    
-}
+/*.type-dp {*/
+    /*cursor:help;*/
+    /*color:green;    */
+/*}*/
 
-.type-ap {
-    cursor:help;
-    color:maroon;    
-}
+/*.type-ap {*/
+    /*cursor:help;*/
+    /*color:maroon;    */
+/*}*/
 
-.type-ni {
-    cursor:help;
-    color:brown;    
-}
+/*.type-ni {*/
+    /*cursor:help;*/
+    /*color:brown;    */
+/*}*/
 
-.logic {
-    color:purple;
-    font-weight:bold;    
-}
+/*.logic {*/
+    /*color:purple;*/
+    /*font-weight:bold;    */
+/*}*/
 
 h3 {
     margin-top: 3px;

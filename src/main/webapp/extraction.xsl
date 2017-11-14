@@ -103,7 +103,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
     </xsl:template>
     
     <xsl:template name="htmlhead">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <!--<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />-->
 
         <link rel='stylesheet' id='generate-style-grid-css'  href='http://mmoon.org/wp-content/themes/generatepress/css/unsemantic-grid.min.css?ver=1.3.21' type='text/css' media='all' />
         <link rel='stylesheet' id='generate-style-css'  href='http://mmoon.org/wp-content/themes/generatepress/style.css?ver=1.3.21' type='text/css' media='all' />
@@ -463,7 +463,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
                     <xsl:apply-templates select="rdfs:label" mode="head" />
                 </xsl:otherwise>
             </xsl:choose>
-            <xsl:apply-templates mode="head" />
+            <!--<xsl:apply-templates mode="head" />-->
             <xsl:call-template name="htmlhead" />
         </head>
 
@@ -506,7 +506,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
                     <xsl:otherwise>
                         <xsl:apply-templates select="rdfs:label" mode="ontology" />
                     </xsl:otherwise>
-                </xsl:choose>
+                </xsl:choose></h1>
                 <xsl:call-template name="get.ontology.url" />
                 <xsl:call-template name="get.version" />
                 <xsl:call-template name="get.author" />
@@ -515,8 +515,8 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
                 <xsl:apply-templates select="dc:rights|dcterms:rights" />
 
 
-                </h1></header><!-- .entry-header -->
-            <div class="entry-content" itemprop="text">
+                </header><!-- .entry-header -->
+            <!--<div class="entry-content" itemprop="text">-->
 
 
             <xsl:apply-templates select="rdfs:comment" mode="ontology" />
@@ -534,7 +534,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
             <p class="endnote">This HTML document was obtained by processing the OWL ontology source code through <a href="http://www.essepuntato.it/lode">LODE</a>, <em>Live OWL Documentation Environment</em>, developed by <a href="http://www.essepuntato.it">Silvio Peroni</a>.</p>
 
 
-            </div><!-- .entry-content -->
+            <!--</div>&lt;!&ndash; .entry-content &ndash;&gt;-->
             </div><!-- .inside-article -->
             </article><!-- #post-## -->
             </main><!-- #main -->
