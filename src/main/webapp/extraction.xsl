@@ -767,7 +767,8 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
     <xsl:template match="element()|text()[normalize-space() = '']" />
     
     <xsl:template match="owl:Class">
-        <div id="{generate-id()}" class="entity">
+        <xsl:variable name="anchor" select="f:getAnchor(@*:about|@*:ID)" as="xs:string" />
+        <div id="{$anchor}" class="entity">
             <xsl:call-template name="get.entity.name">
                 <xsl:with-param name="toc" select="'classes'" tunnel="yes" as="xs:string" />
                 <xsl:with-param name="toc.string" select="f:getDescriptionLabel('classtoc')" tunnel="yes" as="xs:string" />
@@ -780,7 +781,8 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
     </xsl:template>
     
     <xsl:template match="owl:NamedIndividual">
-        <div id="{generate-id()}" class="entity">
+        <xsl:variable name="anchor" select="f:getAnchor(@*:about|@*:ID)" as="xs:string" />
+        <div id="{$anchor}" class="entity">
             <xsl:call-template name="get.entity.name" />
             <xsl:call-template name="get.entity.metadata" />
             <xsl:apply-templates select="rdfs:comment" />
@@ -790,7 +792,8 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
     </xsl:template>
     
     <xsl:template match="owl:ObjectProperty | owl:DatatypeProperty | owl:AnnotationProperty">
-        <div id="{generate-id()}" class="entity">
+        <xsl:variable name="anchor" select="f:getAnchor(@*:about|@*:ID)" as="xs:string" />
+        <div id="{$anchor}" class="entity">
             <xsl:call-template name="get.entity.name">
                 <xsl:with-param name="toc" select="if (self::owl:ObjectProperty) then 'objectproperties' else if (self::owl:AnnotationProperty) then 'annotationproperties' else 'dataproperties'" tunnel="yes" as="xs:string" />
                 <xsl:with-param name="toc.string" select="if (self::owl:ObjectProperty) then f:getDescriptionLabel('objectpropertytoc') else if (self::owl:AnnotationProperty) then f:getDescriptionLabel('annotationpropertytoc') else f:getDescriptionLabel('datapropertytoc')" tunnel="yes" as="xs:string" />
@@ -844,7 +847,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
     
     <xsl:template match="element()" mode="toc">
         <li>
-            <a href="#{generate-id()}" title="{@*:about|@*:ID}">
+            <a href="#{f:getAnchor(@*:about|@*:ID)}" title="{@*:about|@*:ID}">
                 <xsl:choose>
                     <xsl:when test="exists(rdfs:label)">
                         <xsl:value-of select="rdfs:label[f:isInLanguage(.)]" />
@@ -895,29 +898,33 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
     <xsl:template match="@*:about | @*:resource | @*:ID | @*:datatype">
         <xsl:param name="type" select="''" as="xs:string" tunnel="yes" />
         
-        <xsl:variable name="anchor" select="f:findEntityId(.,$type)" as="xs:string" />
+        <!--<xsl:variable name="anchor" select="f:findEntityId(.,$type)" as="xs:string" />-->
         <xsl:variable name="label" select="f:getLabel(.)" as="xs:string" />
         <!--<xsl:variable name="url" select="@*:about|@*:ID" as="xs:string" />-->
         <!--<xsl:value-of select="@*:about|@*:ID" />-->
 
-        <xsl:choose>
-            <xsl:when test="$anchor = ''">
-                <!--<span class="dotted" title="{.}">-->
+        <a href="{.}" title="{.}">
+            <xsl:value-of select="$label" />
+        </a>
+
+        <!--<xsl:choose>-->
+            <!--<xsl:when test="$anchor = ''">-->
+                <!--&lt;!&ndash;<span class="dotted" title="{.}">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<xsl:value-of select="$label" />&ndash;&gt;-->
+                <!--&lt;!&ndash;</span>&ndash;&gt;-->
+                <!--&lt;!&ndash;<a href="{@*:about|@*:ID}" title="{.}">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<xsl:value-of select="@*:about|@*:ID" />&ndash;&gt;-->
+                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                <!--<a href="{.}" title="{.}">-->
                     <!--<xsl:value-of select="$label" />-->
-                <!--</span>-->
-                <!--<a href="{@*:about|@*:ID}" title="{.}">-->
-                    <!--<xsl:value-of select="@*:about|@*:ID" />-->
                 <!--</a>-->
-                <a href="{.}" title="{.}">
-                    <xsl:value-of select="$label" />
-                </a>
-            </xsl:when>
-            <xsl:otherwise>
-                <a href="#{$anchor}" title="{.}">
-                    <xsl:value-of select="$label" />
-                </a>
-            </xsl:otherwise>
-        </xsl:choose>
+            <!--</xsl:when>-->
+            <!--<xsl:otherwise>-->
+                <!--<a href="#{$anchor}" title="{.}">-->
+                    <!--<xsl:value-of select="$label" />-->
+                <!--</a>-->
+            <!--</xsl:otherwise>-->
+        <!--</xsl:choose>-->
 
         <xsl:call-template name="get.entity.type.descriptor">
             <xsl:with-param name="iri" select="." as="xs:string" />
@@ -1015,6 +1022,37 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
                         <xsl:value-of select="normalize-space($underscoreOrDash)" />
                     </xsl:otherwise>
                 </xsl:choose>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+
+    <xsl:function name="f:getAnchor" as="xs:string">
+        <xsl:param name="iri" as="xs:string" />
+        <xsl:variable name="localName" as="xs:string?">
+            <xsl:variable
+                name="current-index"
+                select="if (contains($iri,'#'))
+                    then f:string-first-index-of($iri,'#')
+                    else f:string-last-index-of(replace($iri,'://','---'),'/')"
+                as="xs:integer?" />
+            <xsl:if test="exists($current-index) and string-length($iri) != $current-index">
+                <xsl:sequence select="substring($iri,$current-index + 1)" />
+            </xsl:if>
+        </xsl:variable>
+        <xsl:choose>
+            <xsl:when test="string-length($localName) = 0">
+                <xsl:variable name="prefix" select="f:getPrefixFromIRI($iri)" as="xs:string*" />
+                <xsl:choose>
+                    <xsl:when test="empty($prefix)">
+                        <xsl:value-of select="$iri" />
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="concat($prefix,':',substring-after($iri, $prefixes-uris[index-of($prefixes-uris,$prefix)[1] + 1]))" />
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise>
+                 <xsl:value-of select="$localName" />
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
