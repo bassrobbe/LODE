@@ -909,7 +909,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
                     <!--<xsl:value-of select="@*:about|@*:ID" />-->
                 <!--</a>-->
                 <a href="{.}" title="{.}">
-                    <xsl:value-of select="." />
+                    <xsl:value-of select="$label" />
                 </a>
             </xsl:when>
             <xsl:otherwise>
@@ -1012,7 +1012,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
                     <xsl:otherwise>
                         <xsl:variable name="camelCase" select="replace($localName,'([A-Z])',' $1')" />
                         <xsl:variable name="underscoreOrDash" select="replace($camelCase,'(_|-)',' ')" />
-                        <xsl:value-of select="normalize-space(lower-case($underscoreOrDash))" />
+                        <xsl:value-of select="normalize-space($underscoreOrDash)" />
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:otherwise>
