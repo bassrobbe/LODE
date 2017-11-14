@@ -1,15 +1,15 @@
 body {
-    text-align: justify;    
+    text-align: justify;
+    /*background-color: #d0e8dd;*/
 }
 
-h1 {
-    line-height: 110%;    
-}
 
 .hlist {
-    border: 1px solid navy;
+    border: 2px solid black;
     padding:5px;
-    background-color: #F4FFFF; 
+    background-color: rgb(242, 243, 244);
+    margin-left: 0px;
+
 }
 
 .hlist li {
@@ -17,11 +17,10 @@ h1 {
     display: inline-table;
     list-style-type: none;
     padding-right: 20px;
-    
 }
 
 .entity {
-    border: 1px solid navy;
+    border: 2px solid black;
     margin:5px 0px 5px 0px;
     padding: 5px;    
 }
@@ -33,7 +32,7 @@ h1 {
 
 .type-op {
     cursor:help;
-    color:navy;    
+    color:black;
 }
 
 .type-dp {
@@ -59,24 +58,35 @@ h1 {
 h3 {
     margin-top: 3px;
     padding-bottom: 5px;
-    border-bottom: 1px solid navy;
+    border-bottom: 1px solid black;
 }
 
 h2 {
     margin-top:40px;    
 }
 
-.dotted {
-    border-bottom: 1px dotted gray;
-}
+/*.dotted {*/
+    /*border-bottom: 1px dotted gray;*/
+/*}*/
 
 dt {
-    margin-top:5px;
+    margin-top:15px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+dd {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .description {
-    border-top: 1px dashed gray;
-    border-bottom: 1px dashed gray;
+    /*border-top: 1px dashed gray;*/
+    /*border-bottom: 1px dashed gray;*/
+    border: 1px solid black;
     background-color: rgb(242, 243, 244);
     margin-top:5px;
     padding-bottom:5px;
@@ -97,16 +107,8 @@ dt {
     float:right;
     color:black;
     padding: 2px;
-    border: 1px dotted navy;
+    /*border: 1px dotted black;*/
     background-color: #F4FFFF;
-}
-
-.imageblock {
-	text-align: center;
-}
-
-.imageblock img {
-	border:1px solid gray;
 }
 
 .endnote {
