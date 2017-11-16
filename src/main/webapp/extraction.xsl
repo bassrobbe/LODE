@@ -431,11 +431,11 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
         <!--<link href="{$css-location}owl.css" rel="stylesheet" type="text/css" />-->
         <!--<link href="{$css-location}Primer.css" rel="stylesheet" type="text/css" />-->
         <!--<link href="{$css-location}rec.css" rel="stylesheet" type="text/css" />-->
-        <link href="{$css-location}extra.css" rel="stylesheet" type="text/css" />
-        <link rel="shortcut icon" href="{$css-location}favicon.ico" />
-        <script src="{$css-location}jquery.js"><!-- Comment for compatibility --></script>
-        <script src="{$css-location}jquery.scrollTo.js"><!-- Comment for compatibility --></script>
-        <script src="{$css-location}marked.min.js"><!-- Comment for compatibility --></script>
+        <link href="mmoon.org/lode/extra.css" rel="stylesheet" type="text/css" />
+        <link rel="shortcut icon" href="mmoon.org/lode/favicon.ico" />
+        <script src="mmoon.org/lode/jquery.js"><!-- Comment for compatibility --></script>
+        <script src="mmoon.org/lode/jquery.scrollTo.js"><!-- Comment for compatibility --></script>
+        <script src="mmoon.org/lode/marked.min.js"><!-- Comment for compatibility --></script>
         <script>
             $(document).ready(
             function () {
