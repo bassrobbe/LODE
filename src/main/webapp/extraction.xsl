@@ -484,7 +484,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
                             <li id="menu-item-183" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-183"><a href="http://mmoon.org/feedback/">Feedback</a></li>
                             <li id="menu-item-185" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185"><a href="http://mmoon.org/mmoon-core-model/">MMoOn Core Model</a></li>
                             <li id="menu-item-186" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-186"><a href="http://mmoon.org/publications/">Publications</a></li>
-                            <li class="search-item" title="Search"><a href="#"><i class="fa fa-fw fa-search"></i></a></li>
                         </ul>
                     </div>
                 </div><!-- .inside-navigation -->
