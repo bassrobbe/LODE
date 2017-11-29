@@ -481,9 +481,11 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
                     <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="mobile-menu">Menu</span></button>
                     <div id="primary-menu" class="main-nav">
                         <ul id="menu-menu-1" class=" menu sf-menu">
-                            <li id="menu-item-183" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-183"><a href="http://mmoon.org/feedback/">Feedback</a></li>
+                            <li id="menu-item-260" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-260"><a href="http://mmoon.org/">Home</a></li>
                             <li id="menu-item-185" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185"><a href="http://mmoon.org/mmoon-core-model/">MMoOn Core Model</a></li>
                             <li id="menu-item-186" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-186"><a href="http://mmoon.org/publications/">Publications</a></li>
+                            <li id="menu-item-262" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-190 current_page_item menu-item-262"><a href="http://mmoon.org/sparql/">SPARQL Access</a></li>
+                            <li id="menu-item-183" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-183"><a href="http://mmoon.org/feedback/">Feedback</a></li>
                         </ul>
                     </div>
                 </div><!-- .inside-navigation -->
